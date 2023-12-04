@@ -19,30 +19,28 @@ public class BlocoDeNotas {
         do {
             if (alt == 1) {
                 notaSalvo1 = CriarNota1();
-                System.out.println(
-                        "Você deseja escrever outra nota? [1] Sim / [2] Não");
+                System.out.println("Você deseja escrever outra nota? [1] Sim / [2] Não");
                 criarNota = sc.nextInt();
                 if (criarNota == 1) {
                     notaSalvo2 = CriarNota2();
                 }
             } else if (alt == 2) {
-                System.out
-                        .println("Qual nota você quer visualizar? [1] ou [2]?");
+                System.out.println("Qual nota você quer visualizar? [1] ou [2]?");
                 escolha = sc.nextInt();
-                if (escolha != 1 && notaSalvo1.isEmpty()) {
+                if (escolha == 1 && !notaSalvo1.isEmpty()) {
                     System.out.println("Aqui está a nota numero 1: ");
-                    for (String nota11 : notaSalvo1) {
-                        System.out.println(nota11);
+                    for (String nota : notaSalvo1) {
+                        System.out.println(nota);
                     }
-                } else if (escolha != 2 && !notaSalvo2.isEmpty()) {
+                } else if (escolha == 2 && !notaSalvo2.isEmpty()) {
                     System.out.println("Aqui está a nota numero 2: ");
-                    for (String nota11 : notaSalvo2) {
-                        System.out.println(nota11);
+                    for (String nota : notaSalvo2) {
+                        System.out.println(nota);
                     }
-                } else if (escolha != 2 && !notaSalvo2.isEmpty()) {
-                    System.err.println("A segunda nota está vazia.");
-                } else if (escolha != 1 && !notaSalvo1.isEmpty()) {
-                    System.err.println("A primeira nota está vazia.");
+                } else if (escolha == 2 && notaSalvo2.isEmpty()) {
+                    System.out.println("A segunda nota está vazia.");
+                } else if (escolha == 1 && notaSalvo1.isEmpty()) {
+                    System.out.println("A primeira nota está vazia.");
                 }
             }
 
