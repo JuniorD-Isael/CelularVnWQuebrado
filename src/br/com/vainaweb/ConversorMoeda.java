@@ -6,27 +6,27 @@ public class ConversorMoeda {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
-        int cotacaoDolar = 4.89; 
+        double cotacaoDolar = 4.89;
 
         do {
-            exibirOpcoesConversor(cotacaoDolar);
-            exibirOpcoesConversorUS(cotacaoDolar)
-            float valor, resultado;           
+            exibirOpcoesConversor();
+            exibirOpcoesConversorUS();
+            double valor, resultado;
 
             switch (opcao) {
-                case 1;
+                case 1:
                     System.out.println("Digite o valor em dólar: ");
                     valor = sc.nextFloat();
-                    resultado = valor * cotacaoDolar;
+                    resultado = (valor * cotacaoDolar);
                     System.out.println("O resultado é: R$" + resultado);
                     break;
-                case 2;
+                case 2:
                     System.out.println("Digite o valor em real: ");
                     valor = sc.nextFloat();
                     resultado = valor / cotacaoDolar;
                     System.out.println("O resultado é: US$" + resultado);
                     break;
-                case 3;
+                case 3:
                     OpcoesIniciais.main(args);
                     break;
                 default:
@@ -50,7 +50,7 @@ public class ConversorMoeda {
         System.out.println(" [1] Dólar para Real" + "\n [2] Real para Dólar" + "\n [3] Voltar");
     }
     
-    public static void mainUS(String[] args) {
+    public static void mainUS() {
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
         float cotacaoDolar = 4.89f; 
@@ -60,20 +60,20 @@ public class ConversorMoeda {
             float valor, resultado;
 
             switch (opcao) {
-                case 1;
+                case 1:
                 	System.out.println("Enter the value in dollars: ");
                     valor = sc.nextFloat();
                     resultado = valor / cotacaoDolar;
                     System.out.println("The result is: R$" + resultado);
                     break;
-                case 2;
+                case 2:
                 	System.out.println("Enter the value in Brazilian real: ");
                     valor = sc.nextFloat();
                     resultado = valor * cotacaoDolar;
                     System.out.println("The result is: US$" + resultado);
                     break;
-                case 3;
-                    OpcoesIniciais.mainUS(args);
+                case 3:
+                    OpcoesIniciais.mainUS();
                     break;
                 default:
                     System.err.println("Invalid Option!");
