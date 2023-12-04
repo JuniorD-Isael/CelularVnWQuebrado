@@ -108,10 +108,10 @@ public class BlocoDeNotas {
                     for (String nota : notaSalvo2) {
                         System.out.println(nota);
                     }
-                } else if (escolha != 2 && notaSalvo2.isEmpty()) {
-                    System.err.println("The second note is empty.");
+                } else if (escolha == 2 && notaSalvo2.isEmpty()) {
+                    System.out.println("The second note is empty.");
                 } else if (escolha == 1 && notaSalvo1.isEmpty()) {
-                    System.err.println("The first note is empty.");
+                    System.out.println("The first note is empty.");
                 }
             }
 
@@ -147,5 +147,4 @@ public class BlocoDeNotas {
         System.out.println(" [1] Create a Note" + "\n [2] View written notes."
                 + "\n [3] Exit");
     }
-
 }
