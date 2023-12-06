@@ -3,15 +3,14 @@ package br.com.vainaweb;
 import java.util.Scanner;
 
 public class CelciFahrenheit {
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         float TC = 0, TF = 0, resultado = 0;
         int opcao = 0;
 
-        exibirOpcoesConversor();
-
         do {
+            exibirOpcoesConversor();
+            System.out.println("Escolha uma opção de conversão: ");
             if (sc.hasNextInt()) {
                 opcao = sc.nextInt();
             } else {
@@ -38,25 +37,22 @@ public class CelciFahrenheit {
                     break;
                 default:
                     System.err.println("Opcão Inválida!");
-
             }
-            exibirOpcoesConversor();
         } while (opcao != 3);
-
-        sc.close();
     }
 
     public static void exibirOpcoesConversor() {
-        System.out.println("Escolha uma opção de conversão: ");
         System.out.println(" [1] Celcius para Fahrenheit" + "\n [2] Fahrenheit para Celcius" + "\n [3] Voltar");
     }
 
     public static void mainUS(String[] args) {
         Scanner sc = new Scanner(System.in);
-        exibirOpcoesConversorUS();
-        int opcao = sc.nextInt();
-        float TC, TF, resultado;
+        float TC = 0, TF = 0, resultado = 0;
+        int opcao = 0;
+
         do {
+            exibirOpcoesConversorUS();
+            System.out.println("Choose a conversion option: ");
             if (sc.hasNextInt()) {
                 opcao = sc.nextInt();
             } else {
@@ -83,15 +79,11 @@ public class CelciFahrenheit {
                     break;
                 default:
                     System.err.println("Invalid Option!");
-                    exibirOpcoesConversorUS();
             }
         } while (opcao != 3);
-
-        sc.close();
     }
 
     public static void exibirOpcoesConversorUS() {
-        System.out.println("Choose a conversion option: ");
         System.out.println("[1] Celsius to Fahrenheit" + "\n [2] Fahrenheit to Celsius" + "\n [3] Back");
     }
 }

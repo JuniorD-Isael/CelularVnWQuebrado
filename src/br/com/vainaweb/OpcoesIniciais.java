@@ -16,7 +16,6 @@ public class OpcoesIniciais {
 
         do {
             exibirOpcoesIniciais();
-            sc.reset();
             System.out.printf("Digite o código do aplicativo: ");
 
             if (sc.hasNextInt()) {
@@ -53,8 +52,6 @@ public class OpcoesIniciais {
                     break;
             }
         } while(opcao != 7);
-
-        sc.close();
     }
 
     public static void exibirOpcoesIniciais() {
@@ -105,7 +102,6 @@ public class OpcoesIniciais {
             }
         } while (opcao != 7);
 
-        sc.close();
         return opcao;
     }
 

@@ -8,11 +8,12 @@ public class BlocoDeNotas {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> notaSalvo1 = new ArrayList<>();
         ArrayList<String> notaSalvo2 = new ArrayList<>();
-
-        exibirOpcoes();
-        int alt = sc.nextInt(), escolha = 0, criarNota = 0;
+        int alt = 0, escolha = 0, criarNota = 0;
 
         do {
+            exibirOpcoes();
+            System.out.printf("Digite uma opção: ");
+            alt = sc.nextInt();
             if (alt == 1) {
                 notaSalvo1 = CriarNota1();
                 System.out.println("Você deseja escrever outra nota? [1] Sim / [2] Não");
@@ -39,12 +40,7 @@ public class BlocoDeNotas {
                     System.out.println("A primeira nota está vazia.");
                 }
             }
-
-            if (alt < 3 && alt > 0) {
-                exibirOpcoes();
-                alt = sc.nextInt();
-            }
-        } while (alt < 3);
+        } while (alt > 0 && alt < 3);
 
         OpcoesIniciais.main(args);
     }
@@ -56,7 +52,6 @@ public class BlocoDeNotas {
         System.out.println("Escreva a sua nota[1] aqui:");
         nota1.add(sc.nextLine());
 
-        sc.close();
         return nota1;
     }
 
@@ -67,7 +62,6 @@ public class BlocoDeNotas {
         System.out.println("Escreva a sua nota[2] aqui:");
         nota2.add(sc.nextLine());
 
-        sc.close();
         return nota2;
     }
 
@@ -80,11 +74,13 @@ public class BlocoDeNotas {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> notaSalvo1 = new ArrayList<>();
         ArrayList<String> notaSalvo2 = new ArrayList<>();
-
-        exibirOpcoesUS();
-        int alt = sc.nextInt(), escolha = 0, criarNota = 0;
+        int alt = 0, escolha = 0, criarNota = 0;
 
         do {
+            exibirOpcoesUS();
+            System.out.printf("Enter an option: ");
+            alt = sc.nextInt();
+
             if (alt == 1) {
                 notaSalvo1 = CriarNota1US();
                 System.out.println("Do you want to write another note? [1] Yes / [2] No");
@@ -112,14 +108,8 @@ public class BlocoDeNotas {
                 }
             }
 
-            if (alt < 3 && alt > 0) {
-                exibirOpcoes();
-                alt = sc.nextInt();
-            }
+        } while (alt > 0 && alt < 3);
 
-        } while (escolha < 3);
-
-        sc.close();
         OpcoesIniciais.mainUS(args);
     }
 
@@ -133,7 +123,7 @@ public class BlocoDeNotas {
         return nota1;
     }
 
-    public static ArrayList<String> CriarNota2vS() {
+    public static ArrayList<String> CriarNota2US() {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> nota2 = new ArrayList<>();
 
