@@ -3,7 +3,6 @@ package br.com.vainaweb;
 import java.util.Scanner;
 
 public class ConversorMoeda {
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
@@ -41,7 +40,6 @@ public class ConversorMoeda {
                     exibirOpcoesConversor();
             }
         } while (opcao != 3);
-        sc.close();
     }
 
     public static void exibirOpcoesConversor() {
@@ -87,13 +85,10 @@ public class ConversorMoeda {
                 continue;
             }
         } while (opcao != 3);
-
-        sc.close();
     }
 
     public static void exibirOpcoesConversorUS(String[] args) {
         System.out.println("Choose a conversion option: ");
         System.out.println(" [1] Dollar to Real" + "\n [2] Real to Dollar" + "\n [3] Back");
-
     }
 }

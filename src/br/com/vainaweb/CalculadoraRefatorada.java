@@ -60,8 +60,6 @@ public class CalculadoraRefatorada {
                     System.out.println("Opcão Inválida!");
             }
         } while (opcao != 5);
-
-        sc.close();
     }
 
     public static void exibirOpcoesCalculadora() {
@@ -139,8 +137,6 @@ public class CalculadoraRefatorada {
                     System.out.println("Invalid Option!");
             }
         } while (opcaoUS != 5);
-
-        sc.close();
     }
 
     public static void exibirOpcoesCalculadoraUS() {

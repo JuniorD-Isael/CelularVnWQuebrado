@@ -41,10 +41,10 @@ public class Cronometro {
 
     public void capturarEntradaTeclado() {
         Thread thread = new Thread(() -> {
-            Scanner scanner = new Scanner(System.in);
+            Scanner sc = new Scanner(System.in);
             while (tempoPassado <= tempoFinal && running) {
-                if (scanner.hasNextLine()) {
-                    String input = scanner.nextLine();
+                if (sc.hasNextLine()) {
+                    String input = sc.nextLine();
                     if (input.isEmpty()) {
                         pausado = !pausado;
                         if (pausado) {
@@ -60,7 +60,6 @@ public class Cronometro {
                     }
                 }
             }
-            scanner.close();
         });
         thread.start();
     }
@@ -90,7 +89,7 @@ public class Cronometro {
             } else {
                 System.out.println("Entrada inválida. Por favor, digite um número inteiro.");
                 entradaInvalida = true;
-                sc.nextLine(); // Limpar o buffer do scanner
+                sc.nextLine();
             }
         } while(entradaInvalida);
 
@@ -111,7 +110,7 @@ public class Cronometro {
             } else {
                 System.out.println("Invalid input. Please enter an integer.");
                 entradaInvalida = true;
-                sc.nextLine(); // Clear the scanner buffer
+                sc.nextLine();
             }
         } while(entradaInvalida);
 
