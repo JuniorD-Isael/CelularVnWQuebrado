@@ -6,27 +6,66 @@ import java.util.TimerTask;
 
 public class Cronometro {
     private int tempoFinal, tempoPassado;
+    private boolean pausado, running;
     Timer timer = new Timer(true);
 
     public Cronometro(int tempoFinal) {
         this.tempoPassado = 0;
         this.tempoFinal = tempoFinal;
+        this.pausado = false;
+        this.running = false;
     }
 
     public void iniciar() {
-        while (tempoPassado <= tempoFinal) {
-            exibirTempo();
-            tempoPassado += 1;
+        running = true;
+        TimerTask task = new TimerTask() {
+            public void run() {
+                while (tempoPassado <= tempoFinal && running) {
+                    if (!pausado) {
+                        exibirTempo();
+                        tempoPassado += 1;
+                    }
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-        }
+        };
+
+        timer.scheduleAtFixedRate(task, 0, 1000);
+        capturarEntradaTeclado();
     }
 
-    public void parar(Timer timer) {
+    public void capturarEntradaTeclado() {
+        Thread thread = new Thread(() -> {
+            Scanner scanner = new Scanner(System.in);
+            while (tempoPassado <= tempoFinal && running) {
+                if (scanner.hasNextLine()) {
+                    String input = scanner.nextLine();
+                    if (input.isEmpty()) {
+                        pausado = !pausado;
+                        if (pausado) {
+                            System.out.println("Cronômetro pausado. Pressione Enter para continuar...");
+                        } else {
+                            System.out.println("Cronômetro retomado. Pressione Enter para pausar...");
+                        }
+                    } else if (input.equalsIgnoreCase("q")) {
+                        running = false;
+                        System.out.println("Cronômetro parado.");
+                        parar();
+                        break;
+                    }
+                }
+            }
+            scanner.close();
+        });
+        thread.start();
+    }
+
+    public void parar() {
         timer.cancel();
     }
 
@@ -41,7 +80,6 @@ public class Cronometro {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int tempoFinal = 0;
-        char iniciar = 'S';
         boolean entradaInvalida = false;
 
         do {
@@ -52,40 +90,17 @@ public class Cronometro {
             } else {
                 System.out.println("Entrada inválida. Por favor, digite um número inteiro.");
                 entradaInvalida = true;
+                sc.nextLine(); // Limpar o buffer do scanner
             }
         } while(entradaInvalida);
 
         Cronometro cronometro = new Cronometro(tempoFinal);
-
-        do {
-            entradaInvalida = false;
-            System.out.printf("Deseja iniciar o cronômetro? ('S' ou 'N'): ");
-
-            iniciar = sc.next().toUpperCase().charAt(0);
-            if (iniciar != 'S' && iniciar != 'N') {
-                entradaInvalida = true;
-                System.out.println("Entrada inválida. Por favor, 'S' OU 'N'.");
-            }
-        } while(entradaInvalida);
-
-        if (iniciar == 'S') {
-            cronometro.iniciar();
-            try {
-                Thread.sleep(cronometro.tempoFinal);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            cronometro.parar(cronometro.timer);
-        } else {
-            System.out.println("Retornando às opções iniciais...");
-            OpcoesIniciais.main(args);
-        }
+        cronometro.iniciar();
     }
 
     public static void mainUS(String[] args) {
         Scanner sc = new Scanner(System.in);
         int tempoFinal = 0;
-        char iniciar = 'Y';
         boolean entradaInvalida = false;
 
         do {
@@ -96,34 +111,11 @@ public class Cronometro {
             } else {
                 System.out.println("Invalid input. Please enter an integer.");
                 entradaInvalida = true;
+                sc.nextLine(); // Clear the scanner buffer
             }
         } while(entradaInvalida);
 
         Cronometro cronometro = new Cronometro(tempoFinal);
-
-        do {
-            entradaInvalida = false;
-            System.out.printf("Do you want to start the timer? ('Y' or 'N'): ");
-
-            iniciar = sc.next().toUpperCase().charAt(0);
-            if (iniciar != 'Y' && iniciar != 'N') {
-                entradaInvalida = true;
-                System.out.println("Invalid input. Please enter 'Y' OR 'N'.");
-            }
-        } while(entradaInvalida);
-
-        if (iniciar == 'Y') {
-            cronometro.iniciar();
-            try {
-                Thread.sleep(cronometro.tempoFinal);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            cronometro.parar(cronometro.timer);
-        } else {
-            System.out.println("Returning to the initial options...");
-            OpcoesIniciais.main(args);
-        }
+        cronometro.iniciar();
     }
 }
-
