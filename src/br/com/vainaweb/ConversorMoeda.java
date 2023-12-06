@@ -9,7 +9,6 @@ public class ConversorMoeda {
         int opcao = 0;
         double cotacaoDolar = 4.89;
 
-
         do {
             exibirOpcoesConversor();
             double valor, resultado;
@@ -50,14 +49,14 @@ public class ConversorMoeda {
         System.out.println(" [1] Dólar para Real" + "\n [2] Real para Dólar" + "\n [3] Voltar");
     }
 
-    public static void mainUS() {
+    public static void mainUS(String[] args) {
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
         double cotacaoDolar = 4.89;
 
         do {
-            exibirOpcoesConversorUS();
-            double valor, resultado;
+            exibirOpcoesConversorUS(args);
+            double valor = 0, resultado = 0;
 
             switch (opcao) {
                 case 1:
@@ -73,11 +72,11 @@ public class ConversorMoeda {
                     System.out.println("The result is: US$" + resultado);
                     break;
                 case 3:
-                    OpcoesIniciais.mainUS();
+                    OpcoesIniciais.mainUS(args);
                     break;
                 default:
                     System.err.println("Invalid Option!");
-                    exibirOpcoesConversorUS();
+                    exibirOpcoesConversorUS(args);
             }
 
             if (sc.hasNextInt()) {
@@ -88,10 +87,11 @@ public class ConversorMoeda {
                 continue;
             }
         } while (opcao != 3);
+
         sc.close();
     }
 
-    public static void exibirOpcoesConversorUS() {
+    public static void exibirOpcoesConversorUS(String[] args) {
         System.out.println("Choose a conversion option: ");
         System.out.println(" [1] Dollar to Real" + "\n [2] Real to Dollar" + "\n [3] Back");
 

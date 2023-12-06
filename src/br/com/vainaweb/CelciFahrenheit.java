@@ -6,9 +6,10 @@ public class CelciFahrenheit {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        float TC = 0, TF = 0, resultado = 0;
+        int opcao = 0;
+
         exibirOpcoesConversor();
-        float TC, TF, resultado;
-        int opcao;
 
         do {
             if (sc.hasNextInt()) {
@@ -34,7 +35,6 @@ public class CelciFahrenheit {
                     break;
                 case 3:
                     OpcoesIniciais.main(args);
-                    ;
                     break;
                 default:
                     System.err.println("Opcão Inválida!");
@@ -43,6 +43,7 @@ public class CelciFahrenheit {
             exibirOpcoesConversor();
         } while (opcao != 3);
 
+        sc.close();
     }
 
     public static void exibirOpcoesConversor() {
@@ -50,7 +51,7 @@ public class CelciFahrenheit {
         System.out.println(" [1] Celcius para Fahrenheit" + "\n [2] Fahrenheit para Celcius" + "\n [3] Voltar");
     }
 
-    public static void mainUS() {
+    public static void mainUS(String[] args) {
         Scanner sc = new Scanner(System.in);
         exibirOpcoesConversorUS();
         int opcao = sc.nextInt();
@@ -78,23 +79,19 @@ public class CelciFahrenheit {
                     System.out.println("The result is: " + resultado + "ºC");
                     break;
                 case 3:
-                    OpcoesIniciais.mainUS();
-                    ;
+                    OpcoesIniciais.mainUS(args);
                     break;
                 default:
                     System.err.println("Invalid Option!");
                     exibirOpcoesConversorUS();
             }
         } while (opcao != 3);
-        sc.close();
+
         sc.close();
     }
 
     public static void exibirOpcoesConversorUS() {
         System.out.println("Choose a conversion option: ");
-        System.out.println(" [1] Celsius to Fahrenheit" + "\n [2] Fahrenheit to Celsius" + "\n [3] Back");
-
+        System.out.println("[1] Celsius to Fahrenheit" + "\n [2] Fahrenheit to Celsius" + "\n [3] Back");
     }
-
 }
-

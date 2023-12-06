@@ -4,18 +4,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BlocoDeNotas {
-
     public static void main(String[] args) {
-
+        Scanner sc = new Scanner(System.in);
         ArrayList<String> notaSalvo1 = new ArrayList<>();
         ArrayList<String> notaSalvo2 = new ArrayList<>();
 
-        Scanner sc = new Scanner(System.in);
-
         exibirOpcoes();
-        int alt = sc.nextInt();
-        int escolha;
-        int criarNota = 0;
+        int alt = sc.nextInt(), escolha = 0, criarNota = 0;
+
         do {
             if (alt == 1) {
                 notaSalvo1 = CriarNota1();
@@ -50,25 +46,29 @@ public class BlocoDeNotas {
             }
         } while (alt < 3);
 
-
         OpcoesIniciais.main(args);
     }
 
     public static ArrayList<String> CriarNota1() {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> nota1 = new ArrayList<>();
+
         System.out.println("Escreva a sua nota[1] aqui:");
         nota1.add(sc.nextLine());
+
+        sc.close();
         return nota1;
     }
 
     public static ArrayList<String> CriarNota2() {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> nota2 = new ArrayList<>();
+
         System.out.println("Escreva a sua nota[2] aqui:");
         nota2.add(sc.nextLine());
-        return nota2;
 
+        sc.close();
+        return nota2;
     }
 
     public static void exibirOpcoes() {
@@ -76,17 +76,14 @@ public class BlocoDeNotas {
                 + "\n [2] Visualizar notas escritas." + "\n [3] Sair");
     }
 
-    public static void mainUS() {
-
+    public static void mainUS(String[] args) {
+        Scanner sc = new Scanner(System.in);
         ArrayList<String> notaSalvo1 = new ArrayList<>();
         ArrayList<String> notaSalvo2 = new ArrayList<>();
 
-        Scanner sc = new Scanner(System.in);
-
         exibirOpcoesUS();
-        int alt = sc.nextInt();
-        int escolha = 0;
-        int criarNota = 0;
+        int alt = sc.nextInt(), escolha = 0, criarNota = 0;
+
         do {
             if (alt == 1) {
                 notaSalvo1 = CriarNota1US();
@@ -115,32 +112,35 @@ public class BlocoDeNotas {
                 }
             }
 
-            if (alt < 6 && alt > 0) {
+            if (alt < 3 && alt > 0) {
                 exibirOpcoes();
                 alt = sc.nextInt();
             }
 
         } while (escolha < 3);
 
-        OpcoesIniciais.mainUS();
+        sc.close();
+        OpcoesIniciais.mainUS(args);
     }
 
     public static ArrayList<String> CriarNota1US() {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> nota1 = new ArrayList<>();
+
         System.out.println("Write your note [1] here:");
         nota1.add(sc.nextLine());
-        return nota1;
 
+        return nota1;
     }
 
     public static ArrayList<String> CriarNota2vS() {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> nota2 = new ArrayList<>();
+
         System.out.println("Write your note [2] here:");
         nota2.add(sc.nextLine());
-        return nota2;
 
+        return nota2;
     }
 
     public static void exibirOpcoesUS() {
