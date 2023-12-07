@@ -89,7 +89,7 @@ public class Cronometro {
             } else {
                 System.out.println("Entrada inválida. Por favor, digite um número inteiro.");
                 entradaInvalida = true;
-                sc.nextLine();
+                sc.next();
             }
         } while(entradaInvalida);
 
@@ -108,9 +108,10 @@ public class Cronometro {
                 entradaInvalida = false;
                 tempoFinal = sc.nextInt();
             } else {
-                System.out.println("Invalid input. Please enter an integer.");
+                System.err.println("Invalid input. Please, enter an integer.");
+
                 entradaInvalida = true;
-                sc.nextLine();
+                sc.next();
             }
         } while(entradaInvalida);
 

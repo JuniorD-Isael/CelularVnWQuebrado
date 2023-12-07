@@ -13,7 +13,9 @@ public class BlocoDeNotas {
         do {
             exibirOpcoes();
             System.out.printf("Digite uma opção: ");
+
             alt = sc.nextInt();
+
             if (alt == 1) {
                 notaSalvo1 = CriarNota1();
                 System.out.println("Você deseja escrever outra nota? [1] Sim / [2] Não");
@@ -38,6 +40,9 @@ public class BlocoDeNotas {
                     System.out.println("A segunda nota está vazia.");
                 } else if (escolha == 1 && notaSalvo1.isEmpty()) {
                     System.out.println("A primeira nota está vazia.");
+                }
+                else {
+                    System.out.println("Opção inválida.");
                 }
             }
         } while (alt > 0 && alt < 3);
@@ -79,6 +84,7 @@ public class BlocoDeNotas {
         do {
             exibirOpcoesUS();
             System.out.printf("Enter an option: ");
+
             alt = sc.nextInt();
 
             if (alt == 1) {
@@ -105,6 +111,9 @@ public class BlocoDeNotas {
                     System.out.println("The second note is empty.");
                 } else if (escolha == 1 && notaSalvo1.isEmpty()) {
                     System.out.println("The first note is empty.");
+                }
+                else {
+                    System.out.println("Invalid option.");
                 }
             }
 

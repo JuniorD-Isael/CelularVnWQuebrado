@@ -22,6 +22,7 @@ public class OpcoesIniciais {
                 opcao = sc.nextInt();
             } else {
                 opcao = 0;
+                sc.next();
             }
 
             switch (opcao) {
@@ -48,7 +49,7 @@ public class OpcoesIniciais {
                     System.out.println("Desligando aparelho...");
                     break;
                 default:
-                    System.err.println("Opção inválida. Digite novamente.");
+                    System.err.println("Opção inválida. Por favor, digite novamente.");
                     break;
             }
         } while(opcao != 7);
@@ -72,6 +73,7 @@ public class OpcoesIniciais {
                 opcao = sc.nextInt();
             } else {
                 opcao = 0;
+                sc.next();
             }
 
             switch (opcao) {
@@ -97,7 +99,7 @@ public class OpcoesIniciais {
                     System.out.println("Turning off the phone...");
                     break;
                 default:
-                    System.err.println("Invalid option. Enter the option again.");
+                    System.err.println("Invalid option. Please, enter the option again.");
                     break;
             }
         } while (opcao != 7);
